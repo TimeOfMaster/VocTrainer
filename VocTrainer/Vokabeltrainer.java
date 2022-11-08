@@ -1,39 +1,127 @@
 public class Vokabeltrainer{
-    private List <Vokabel> vokabelliste;
-    private int laengeListe;
-    private int laengeUebung; // Anzahl der zu �berpr�fenden Vokabeln
-    private int anzahl; // Nummer der aktuell abgefragten Vokabel
-    private int anzahlRichtig;
-    private int anzahlFalsch;
-    public Vokabeltrainer(){
-        vokabelliste = new List<Vokabel>();
-        laengeListe = 0;
-        laengeUebung = 0;
-        anzahl = 0;
-        anzahlRichtig = 0;
-        anzahlFalsch = 0;
-        neueVokabelHinzufuegen("class","Klasse");
-        neueVokabelHinzufuegen("private","Attribute haben die Sichtbarkeit");
-        neueVokabelHinzufuegen("int","ganze Zahlen sind der Datentyp");
+    List<VocCard> unknown;
+    List<VocCard> known;
+    List<VocCard> perfect;
+
+    int lenght;
+
+    public Vokabeltrainer() {
+        this.unknown = new List<>();
+        this.known = new List<>();
+        this.perfect = new List<>();
+
+        this.lenght = 0;
+
+        preset();
+
+        if(!this.unknown.isEmpty()) {
+            this.unknown.toFirst();
+
+        } else if (!this.known.isEmpty()) {
+            this.known.toFirst();
+
+        } else if (!this.perfect.isEmpty()) {
+            this.perfect.toFirst();
+        }
+    }
+    public void preset() {
+        this.unknown.append(new VocCard("x", "y", "z"));
+        this.lenght ++;
+
+        this.unknown.append(new VocCard("x", "yy", "zz"));
+        this.lenght ++;
+
+        this.unknown.append(new VocCard("x", "yyy", "zzz"));
+        this.lenght ++;
     }
 
-    public void neueVokabelHinzufuegen(String informatik, String deutsch){
-        vokabelliste.append(new Vokabel(informatik, deutsch));
-        laengeListe++;
+    public void neueVokabelHinzufuegen(String questionWord, String translation){
+        unknown.append(new Vokabel(questionWord, translation));
+        this.lenght ++;
     }
-    
-    public String vokabelAbfragen(){
-        vokabelliste.toFirst();
-        return vokabelliste.getContent().getInformatik();
-    }
-    
-    public String alleAusgeben(){
-        String alle = "";
-        vokabelliste.toFirst();
-        while(vokabelliste.hasAccess()){
-            alle = alle +vokabelliste.getContent().getDeutsch()+":"+vokabelliste.getContent().getInformatik()+"\n";
-            vokabelliste.next();
+
+    public int vokabelSearch(String questionWord) {
+        int position = 0;
+
+        if(!this.unknown.isEmpty()) {
+            this.unknown.toFirst();
+            while(this.unknown.hasAccess()) {
+                if(this.unknown.getContent().getQuestionWord().equals(questionWord)){
+                    position ++;
+                    break;
+                }
+                position ++;
+                this.unknown.next();
+            }
+        } else if (!this.known.isEmpty()) {
+            this.known.toFirst();
+            while(this.known.hasAccess()) {
+                if(this.known.getContent().getQuestionWord().equals(questionWord)){
+                    position ++;
+                    break;
+                }
+                position ++;
+                this.known.next();
+            }
+        } else if (!this.perfect.isEmpty()) {
+            this.perfect.toFirst();
+            while(this.perfect.hasAccess()) {
+                if(this.perfect.getContent().getQuestionWord().equals(questionWord)){
+                    position ++;
+                    break;
+                }
+                position ++;
+                this.perfect.next();
+            }
         }
-        return alle;
+
+        return position;
+    }
+    
+    public String vokabelAbfragen() {
+        if(!this.unknown.isEmpty()) {
+            return this.unknown.getContent().getTranslation();
+
+        } else if (!this.known.isEmpty()) {
+            return this.known.getContent().getTranslation();
+
+        } else if (!this.perfect.isEmpty()) {
+            return this.perfect.getContent().getTranslation();
+
+        } else { 
+            return "";
+        }
+    }
+    
+    public String printAll() {
+        String all = "";
+
+        if (!this.unknown.isEmpty()) {
+            all = all + "UNKNOWN:" + "\n";
+            this.unknown.toFirst();
+            while(this.unknown.hasAccess()){
+                all = all + this.unknown.getContent().getQuestionWord() + " : " + this.unknown.getContent().getTranslation() + "\n";
+                this.unknown.next();
+            }
+            all = all + "\n";
+        }
+        if (!this.known.isEmpty()) {
+            all = all + "KNOWN:" + "\n";
+            this.known.toFirst();
+            while(this.known.hasAccess()){
+                all = all + this.known.getContent().getQuestionWord() + " : " + this.known.getContent().getTranslation() + "\n";
+                this.known.next();
+            }
+            all = all + "\n";
+        }
+        if (!this.perfect.isEmpty()) {
+            all = all + "PERFECT:" + "\n";
+            this.perfect.toFirst();
+            while(this.perfect.hasAccess()){
+                all = all + this.perfect.getContent().getQuestionWord() + " : " + this.perfect.getContent().getTranslation() + "\n";
+                this.perfect.next();
+            }
+        }
+        return all;
     }
 }

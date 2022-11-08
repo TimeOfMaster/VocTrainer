@@ -1,45 +1,40 @@
 public class Vokabel{
-    private String deutsch, informatik;
-    private int richtigGenannt;
-    private int falschGenannt;
-    private int anzahlGeuebt;
+    private String questionWord, translation;
+    private int counter;
 
-    public Vokabel(String pInformatik, String pDeutsch){
-        deutsch = pDeutsch;
-        informatik = pInformatik;  
+    public Vokabel(String sQuestionWord, String sTranslation) {
+        this.questionWord = sQuestionWord;
+        this.translation = sTranslation;
+        this.counter = 0;
     }
-    
-    public String getInformatik(){
-        return informatik;
+
+    public Vokabel(String sQuestionWord, String sTranslation, int iCounter) {
+        this.questionWord = sQuestionWord;
+        this.translation = sTranslation;
+        this.counter = iCounter;
     }
-    
-    public String getDeutsch(){
-       return deutsch;
+
+    public String getQuestionWord() {
+        return questionWord;
     }
-    
-    public void setRichtigGenannt(){
-        richtigGenannt++;
-        // Bei richtiger Vokabel werden die Fehlversuche auf 0 zur�ckgesetzt
-        falschGenannt=0;
+
+    public String getTranslation() {
+        return translation;
     }
-    
-    public int getRichtigGenannt(){
-        return richtigGenannt;
+
+    public int getCounter(){
+        return counter;
     }
-    
-    public void setAnzahlGeuebt(){
-        anzahlGeuebt++;
+
+    public void setQuestionWord(String questionWord) {
+        this.questionWord = questionWord;
     }
-    
-    public int getAnzahlGeueb(){
-        return anzahlGeuebt;
+
+    public void setTranslation(String translation) {
+        this.translation = translation;
     }
-    
-    public int getFalschGenannt() {
-        return falschGenannt;
-    }
-    
-    public void setFalschGenannt() {
-        falschGenannt++;
+
+    public void setCounter(int counter){
+        this.counter = counter;
     }
 }
