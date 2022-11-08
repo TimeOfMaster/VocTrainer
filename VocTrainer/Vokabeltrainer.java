@@ -25,20 +25,31 @@ public class Vokabeltrainer{
         }
     }
     public void preset() {
-        this.unknown.append(new VocCard("x", "y", "z"));
+        this.unknown.append(new VocCard("y", "z"));
         this.lenght ++;
 
-        this.unknown.append(new VocCard("x", "yy", "zz"));
+        this.unknown.append(new VocCard("yy", "zz"));
         this.lenght ++;
 
-        this.unknown.append(new VocCard("x", "yyy", "zzz"));
+        this.unknown.append(new VocCard("yyy", "zzz"));
         this.lenght ++;
     }
 
-    public void neueVokabelHinzufuegen(String questionWord, String translation){
+    public void neueVokabelHinzufuegen(String questionWord, String translation) {
         unknown.append(new Vokabel(questionWord, translation));
         this.lenght ++;
     }
+
+    /* // bsp für vokabelSearch()
+    this.unknown.toFirst();
+    for (int i = lenght; i < vokabelSearch("y")// position von y)
+    {
+        next();
+    }
+    this.unknown.remove();
+    lenght --;
+
+    */
 
     public int vokabelSearch(String questionWord) {
         int position = 0;
@@ -49,26 +60,31 @@ public class Vokabeltrainer{
                 if(this.unknown.getContent().getQuestionWord().equals(questionWord)){
                     position ++;
                     break;
+                    return position;
                 }
                 position ++;
                 this.unknown.next();
             }
-        } else if (!this.known.isEmpty()) {
+        }
+        if (!this.known.isEmpty()) {
             this.known.toFirst();
             while(this.known.hasAccess()) {
                 if(this.known.getContent().getQuestionWord().equals(questionWord)){
                     position ++;
                     break;
+                    return position;
                 }
                 position ++;
                 this.known.next();
             }
-        } else if (!this.perfect.isEmpty()) {
+        }
+        if (!this.perfect.isEmpty()) {
             this.perfect.toFirst();
             while(this.perfect.hasAccess()) {
                 if(this.perfect.getContent().getQuestionWord().equals(questionWord)){
                     position ++;
                     break;
+                    return position;
                 }
                 position ++;
                 this.perfect.next();
