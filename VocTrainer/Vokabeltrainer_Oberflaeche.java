@@ -289,7 +289,7 @@ public class Vokabeltrainer_Oberflaeche extends javax.swing.JDialog {
     private void jButtonAusgabeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
       
-        jTextAreaAusgabe.setText(meinTrainer.alleAusgeben());
+        jTextAreaAusgabe.setText(meinTrainer.returnAll());
     }
 
     private void jButtonVokabelLoeschenActionPerformed(java.awt.event.ActionEvent evt) {        

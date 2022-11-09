@@ -106,7 +106,7 @@ public class Vokabeltrainer{
         }
     }
     
-    public String printAll() {
+    public String returnAll() {
         String all = "";
 
         if (!this.unknown.isEmpty()) {
