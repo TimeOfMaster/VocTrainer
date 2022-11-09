@@ -312,8 +312,7 @@ public class Vokabeltrainer_Oberflaeche extends javax.swing.JDialog {
 
 
     private void jButtonLosActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here
-         
+        jTextLernenDt.setText(VokabelTrainer.vokabelAbfragen())
     }
 
     private void jButtonUeberpruefenActionPerformed(java.awt.event.ActionEvent evt) {

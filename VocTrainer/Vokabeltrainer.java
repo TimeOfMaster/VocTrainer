@@ -23,7 +23,12 @@ public class Vokabeltrainer{
         } else if (!this.perfect.isEmpty()) {
             this.perfect.toFirst();
         }
+
+        this.unknown.toFirst();
+        this.known.toFirst();
+        this.perfect.toFirst();
     }
+
     public void preset() {
         this.unknown.append(new Vokabel("y", "z"));
         this.lenght ++;
@@ -38,6 +43,14 @@ public class Vokabeltrainer{
     public void neueVokabelHinzufuegen(String questionWord, String translation) {
         unknown.append(new Vokabel(questionWord, translation));
         this.lenght ++;
+    }
+
+    public void vokabelCheck() {
+        String input = "";
+
+        if (input.equals(this.vokabelAbfragen())){
+            // TODO Add the counter mechanism
+        }
     }
 
     /* // bsp für vokabelSearch()
