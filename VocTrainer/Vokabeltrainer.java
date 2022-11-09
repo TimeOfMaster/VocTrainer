@@ -59,7 +59,6 @@ public class Vokabeltrainer{
             while(this.unknown.hasAccess()) {
                 if(this.unknown.getContent().getQuestionWord().equals(questionWord)){
                     position ++;
-                    break;
                     return position;
                 }
                 position ++;
@@ -71,7 +70,6 @@ public class Vokabeltrainer{
             while(this.known.hasAccess()) {
                 if(this.known.getContent().getQuestionWord().equals(questionWord)){
                     position ++;
-                    break;
                     return position;
                 }
                 position ++;
@@ -83,7 +81,6 @@ public class Vokabeltrainer{
             while(this.perfect.hasAccess()) {
                 if(this.perfect.getContent().getQuestionWord().equals(questionWord)){
                     position ++;
-                    break;
                     return position;
                 }
                 position ++;
