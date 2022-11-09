@@ -1,7 +1,7 @@
 public class Vokabeltrainer{
-    List<VocCard> unknown;
-    List<VocCard> known;
-    List<VocCard> perfect;
+    List<Vokabel> unknown;
+    List<Vokabel> known;
+    List<Vokabel> perfect;
 
     int lenght;
 
@@ -25,13 +25,13 @@ public class Vokabeltrainer{
         }
     }
     public void preset() {
-        this.unknown.append(new VocCard("y", "z"));
+        this.unknown.append(new Vokabel("y", "z"));
         this.lenght ++;
 
-        this.unknown.append(new VocCard("yy", "zz"));
+        this.unknown.append(new Vokabel("yy", "zz"));
         this.lenght ++;
 
-        this.unknown.append(new VocCard("yyy", "zzz"));
+        this.unknown.append(new Vokabel("yyy", "zzz"));
         this.lenght ++;
     }
 
